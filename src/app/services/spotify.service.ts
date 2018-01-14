@@ -5,22 +5,38 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SpotifyService {
 
-  artistas: any[] = [];
+  artists: any[] = [];
+  artist: any[] = [];
+  urlSpotify: string = 'https://api.spotify.com/v1';
+  token: string = 'BQAJ-iNs6Zp4jh1eO3D_y0Kua6JISN6ssKYibkfNpF_l9sOSoylvKxMPKua_3jTGoK_h3aEv_kP8vb4Bi39qKSKksuaOXgVKPsimlzaVNumJ8NHdoEH5SZI_SaOcdwX2mdrZDsqDoUPzcA';
 
   constructor(public httpClient: HttpClient) {
    }
 
-   getArtistas(termino: string) {
-    let url = `https://api.spotify.com/v1/search?query=${termino}&type=artist&market=ES&limit=20`
+   getHeaders(): HttpHeaders{
     let headers = new HttpHeaders({
-      'authorization': 'Bearer BQBPyDs-pwyPDg96_SpdiKd9Y8JZO4MXM7gIF9eiDEuyaa7YlmjdP8SHf4Dd40hFDte4S_OKaaIAAEV02G8' 
-    });
+      'authorization': `Bearer ${this.token}`
+    })
+    return headers;
+   }
+   
+   getArtists(term: string) {
+    let url = `${this.urlSpotify}/search?query=${term}&type=artist&market=ES&limit=20`
+    let headers = this.getHeaders();
 
     return this.httpClient.get(url, { headers })
         .map ( (resp: any) =>{
-          this.artistas = resp.artists.items;
-          return this.artistas;
+          this.artists = resp.artists.items;
+          return this.artists;
    });
 
-}
+  }
+
+  getArtist(id: string) {
+    let url = `${this.urlSpotify}/artists/${id}`
+    let headers = this.getHeaders();
+
+    return this.httpClient.get(url, { headers });
+
+  }
 }

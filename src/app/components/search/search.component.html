@@ -5,19 +5,20 @@
       <input type="text"
         placeholder="Buscar artista..."
         class="form-control"
-        (keyup)="buscarArtista()"
-        [(ngModel)]="termino">
+        (keyup)="searchArtist()"
+        [(ngModel)]="term">
 
     </div>
     <div class="col-md-9">
-      <h1 class="text-capitalice">{{termino}}</h1>
-      <hr *ngIf="termino">
+      <h1 class="text-capitalice">{{term}}</h1>
+      <hr *ngIf="term">
       
       <div class="row">
-        <li class="col-md-3 text-center puntero" *ngFor="let artista of _spotifyService.artistas">
-          <img [src]="artista.images | sinfoto" [alt]="artista.name"
+        <li class="col-md-3 text-center puntero" *ngFor="let artist of _spotifyService.artists"
+        [routerLink]="['/artist', artist.id]">
+          <img [src]="artist.images | sinfoto" [alt]="artist.name"
             class="img-thumbnail">
-            <p>{{ artista.name }}</p>
+            <p>{{ artist.name }}</p>
 
         </li>
       </div>

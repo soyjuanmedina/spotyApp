@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/medina/.platformio/penv/bin:/home/medina/bin:/home/medina/.local/bin:/home/medina/bin:/home/medina/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+    }
+}

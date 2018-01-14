@@ -9,13 +9,13 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class SearchComponent {
 
-  termino: string = '';
+  term: string = '';
 
   constructor( public _spotifyService: SpotifyService) {
   }
 
-  buscarArtista(){
-    this._spotifyService.getArtistas(this.termino).subscribe(response =>{
+  searchArtist(){
+    this._spotifyService.getArtists(this.term).subscribe(response =>{
       console.log(response);
     });
   }
