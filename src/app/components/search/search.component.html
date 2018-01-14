@@ -1,0 +1,22 @@
+<div clas="top30">
+  <div class="row">
+    <div class="col-md-3">
+      <label for="termino">Buscar artista</label>
+      <input type="text"
+        placeholder="Buscar artista..."
+        class="form-control"
+        (keyup)="buscarArtista()"
+        [(ngModel)]="termino">
+
+    </div>
+    <div class="col-md-9">
+      <h1 class="text-capitalice">{{termino}}</h1>
+      <hr *ngIf="termino">
+      <ul>
+        <li *ngFor="let artista of _spotifyService.artistas">
+          {{artista.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
