@@ -12,11 +12,20 @@
     <div class="col-md-9">
       <h1 class="text-capitalice">{{termino}}</h1>
       <hr *ngIf="termino">
-      <ul>
+      
+      <div class="row">
+        <li class="col-md-3 text-center puntero" *ngFor="let artista of _spotifyService.artistas">
+          <img [src]="artista.images | sinfoto" [alt]="artista.name"
+            class="img-thumbnail">
+            <p>{{ artista.name }}</p>
+
+        </li>
+      </div>
+    <!--   <ul>
         <li *ngFor="let artista of _spotifyService.artistas">
           {{artista.name}}
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </div>

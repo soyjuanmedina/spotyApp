@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms'
 
 //Services
 import { SpotifyService } from './services/spotify.service';
+import { SinfotoPipe } from './pipes/sinfoto.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { SpotifyService } from './services/spotify.service';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    SearchComponent
+    SearchComponent,
+    SinfotoPipe
   ],
   imports: [
     BrowserModule,
